@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "393498996591",
+    "project_id": "ragam-music",
+    "storage_bucket": "ragam-music.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393498996591:android:2fda5330291b133867c29a",
+        "android_client_info": {
+          "package_name": "com.example.ragam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWRDfgDPGifs2jVcwNYomKUfukonjwgcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
