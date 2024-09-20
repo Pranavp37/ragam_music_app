@@ -4,6 +4,7 @@ import 'package:ragam/common/helpers/is_dark_mode.dart';
 import 'package:ragam/common/widgets/appbar/app_bar.dart';
 import 'package:ragam/common/widgets/botton/basic_app_button.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
+import 'package:ragam/presentation/auth/pages/signin.dart';
 import 'package:ragam/presentation/auth/pages/signup.dart';
 
 class SignupOrSignin extends StatelessWidget {
@@ -64,7 +65,7 @@ class SignupOrSignin extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const Signup(),
+                                    builder: (context) => const SignupPage(),
                                   ));
                             },
                             title: 'Register'),
@@ -75,7 +76,13 @@ class SignupOrSignin extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Signinpage(),
+                                  ));
+                            },
                             child: Text(
                               'Sign in',
                               style: TextStyle(

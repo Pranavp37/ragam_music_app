@@ -10,6 +10,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: titile ?? const Text(''),
+      centerTitle: true,
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
