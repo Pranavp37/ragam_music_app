@@ -8,6 +8,7 @@ import 'package:ragam/core/configs/theme/app_theme.dart';
 import 'package:ragam/firebase_options.dart';
 import 'package:ragam/presentation/choosemode/bloc/theme_cubit.dart';
 import 'package:ragam/presentation/splash/pages/splash.dart';
+import 'package:ragam/service_locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,7 @@ Future<void> main() async {
         : await getApplicationDocumentsDirectory(),
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initilizeDependecies();
   runApp(const MyApp());
 }
 

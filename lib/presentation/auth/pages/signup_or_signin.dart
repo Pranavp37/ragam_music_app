@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ragam/assets/app_image.dart';
+import 'package:ragam/core/assets/app_image.dart';
 import 'package:ragam/common/helpers/is_dark_mode.dart';
 import 'package:ragam/common/widgets/appbar/app_bar.dart';
 import 'package:ragam/common/widgets/botton/basic_app_button.dart';
@@ -65,7 +65,7 @@ class SignupOrSignin extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const SignupPage(),
+                                    builder: (context) =>  SignupPage(),
                                   ));
                             },
                             title: 'Register'),
@@ -80,7 +80,7 @@ class SignupOrSignin extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const Signinpage(),
+                                    builder: (context) =>  Signinpage(),
                                   ));
                             },
                             child: Text(

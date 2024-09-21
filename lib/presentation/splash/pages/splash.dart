@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ragam/assets/app_image.dart';
+import 'package:ragam/core/assets/app_image.dart';
 import 'package:ragam/presentation/intro/pages/get_started.dart';
 
 class SplashPage extends StatefulWidget {

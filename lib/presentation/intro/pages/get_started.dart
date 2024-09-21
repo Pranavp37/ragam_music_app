@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ragam/assets/app_image.dart';
+import 'package:ragam/core/assets/app_image.dart';
 import 'package:ragam/common/widgets/botton/basic_app_button.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
 import 'package:ragam/presentation/choosemode/pages/choose_mode.dart';
