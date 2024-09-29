@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:ragam/core/assets/app_image.dart';
+import 'package:ragam/core/configs/assets/app_image.dart';
 import 'package:ragam/common/widgets/appbar/app_bar.dart';
 import 'package:ragam/common/widgets/botton/basic_app_button.dart';
 import 'package:ragam/data/models/auth/signin_user_request.dart';
 import 'package:ragam/domain/usecases/auth/signin.dart';
 import 'package:ragam/presentation/auth/pages/signup.dart';
-import 'package:ragam/presentation/root/pages/root.dart';
+import 'package:ragam/presentation/home/pages/home.dart';
 import 'package:ragam/service_locator.dart';
 
 class Signinpage extends StatelessWidget {
@@ -42,7 +42,7 @@ class Signinpage extends StatelessWidget {
                       email: _email.text.toString(),
                       password: _password.text.toString(),
                     ));
-                          result.fold(
+                    result.fold(
                       (l) {
                         var snackbar = SnackBar(content: Text(l));
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
@@ -51,7 +51,7 @@ class Signinpage extends StatelessWidget {
                         Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const RootPage(),
+                            builder: (context) => const HomePage(),
                           ),
                           (route) => false,
                         );

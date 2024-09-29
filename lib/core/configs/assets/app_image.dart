@@ -4,4 +4,5 @@ class AppImage {
   static const String getStarted = '${basepath}get_started.png';
   static const String choodemode = '${basepath}choose_mode.png';
   static const String signOrsinupBG = '${basepath}signuporsigninBG.png';
+  static const String homePageModel = '${basepath}homepage_top_artist.png';
 }

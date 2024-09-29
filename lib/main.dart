@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:ragam/core/configs/theme/app_theme.dart';
 import 'package:ragam/firebase_options.dart';
 import 'package:ragam/presentation/choosemode/bloc/theme_cubit.dart';
+import 'package:ragam/presentation/home/pages/home.dart';
 import 'package:ragam/presentation/splash/pages/splash.dart';
 import 'package:ragam/service_locator.dart';
 
