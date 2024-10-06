@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ragam/common/helpers/is_dark_mode.dart';
-import 'package:ragam/common/widgets/appbar/app_bar.dart';
-import 'package:ragam/core/configs/assets/app_image.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
 import 'package:ragam/domain/entities/song/song.dart';
 import 'package:ragam/presentation/home/bloc/news_songs_cubit.dart';

@@ -6,12 +6,17 @@ class SongModel {
   String? artist;
   num? duration;
   Timestamp? releaseDate;
+  bool? isFavorate;
+  String? songId;
 
-  SongModel(
-      {required this.titile,
-      required this.artist,
-      required this.duration,
-      required this.releaseDate});
+  SongModel({
+    required this.titile,
+    required this.artist,
+    required this.duration,
+    required this.releaseDate,
+    required this.isFavorate,
+    required this.songId,
+  });
 
   SongModel.fromJson(Map<String, dynamic> data) {
     titile = data['title'];
@@ -30,9 +35,12 @@ class SongModel {
 extension SongModelX on SongModel {
   SongEntities toEntity() {
     return SongEntities(
-        titile: titile!,
-        artist: artist!,
-        duration: duration!,
-        releaseDate: releaseDate!);
+      titile: titile!,
+      artist: artist!,
+      duration: duration!,
+      releaseDate: releaseDate!,
+      isFavorate: isFavorate!,
+      songId: songId!,
+    );
   }
 }

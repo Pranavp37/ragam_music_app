@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ragam/common/helpers/is_dark_mode.dart';
+import 'package:ragam/common/widgets/favorate_botton/favorate_botton.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
 import 'package:ragam/domain/entities/song/song.dart';
 import 'package:ragam/presentation/home/bloc/play_list_cubit.dart';
@@ -125,13 +126,9 @@ class PlayList extends StatelessWidget {
                     songs[index].duration.toString().replaceAll('.', ':'),
                   ),
                   const SizedBox(width: 20),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite_outline_outlined,
-                        size: 25,
-                        color: AppColors.darkGrey,
-                      ))
+                  FavorateBotton(
+                    songEntities: songs[index],
+                  )
                 ],
               )
             ],

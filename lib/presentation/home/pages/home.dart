@@ -5,6 +5,7 @@ import 'package:ragam/core/configs/assets/app_image.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
 import 'package:ragam/presentation/home/widgets/news_songs.dart';
 import 'package:ragam/presentation/home/widgets/play_list.dart';
+import 'package:ragam/presentation/profile/pages/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,6 +26,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
+        action: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfilePage(),
+                  ));
+            },
+            icon: const Icon(
+              Icons.person,
+              size: 30,
+            )),
         hidebackBtn: true,
         titile: Image.asset(
           AppImage.logo,
@@ -135,28 +148,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           'News',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 19,
+            fontSize: 18,
           ),
         ),
         Text(
           'Videos',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 19,
+            fontSize: 18,
           ),
         ),
         Text(
           'Artists',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 19,
+            fontSize: 18,
           ),
         ),
         Text(
           'Podcast',
           style: TextStyle(
             fontWeight: FontWeight.w500,
-            fontSize: 19,
+            fontSize: 18,
           ),
         ),
       ],

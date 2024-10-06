@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ragam/common/widgets/appbar/app_bar.dart';
+import 'package:ragam/common/widgets/favorate_botton/favorate_botton.dart';
 import 'package:ragam/core/configs/constant/app_urls.dart';
 import 'package:ragam/core/configs/theme/app_colors.dart';
 import 'package:ragam/domain/entities/song/song.dart';
-import 'package:ragam/presentation/home/bloc/play_list_cubit.dart';
 import 'package:ragam/presentation/song_player/bloc/song_player_cubit.dart';
+import 'package:ragam/presentation/song_player/bloc/song_player_state.dart';
 
 class SongPlayerPage extends StatelessWidget {
   const SongPlayerPage({
@@ -44,6 +45,10 @@ class SongPlayerPage extends StatelessWidget {
                 height: 20,
               ),
               _songDetails(),
+              const SizedBox(
+                height: 30,
+              ),
+              _songPlayer(context),
             ],
           ),
         ),
@@ -88,14 +93,103 @@ class SongPlayerPage extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_outline_outlined,
-              size: 35,
-              color: AppColors.darkGrey,
-            ))
+        FavorateBotton(
+          songEntities: songEntities,
+        ),
       ],
     );
+  }
+
+  Widget _songPlayer(BuildContext context) {
+    return BlocBuilder<SongPlayerCubit, SongPlayerState>(
+      builder: (context, state) {
+        if (state is SongPlayerLoading) {
+          return const CircularProgressIndicator();
+        }
+        if (state is SongPlayerLoaded) {
+          return Column(
+            children: [
+              Slider(
+                value: context
+                    .read<SongPlayerCubit>()
+                    .songPosition
+                    .inSeconds
+                    .toDouble(),
+                min: 0.0,
+                max: context
+                    .read<SongPlayerCubit>()
+                    .songDuration
+                    .inSeconds
+                    .toDouble(),
+                onChanged: (value) {},
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(formatDuration(
+                      context.read<SongPlayerCubit>().songPosition)),
+                  Text(formatDuration(
+                      context.read<SongPlayerCubit>().songDuration)),
+                ],
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          size: 25,
+                        )),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<SongPlayerCubit>().playOrPuseSong();
+                      },
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          context.read<SongPlayerCubit>().audioPlayer.playing
+                              ? Icons.pause
+                              : Icons.play_arrow,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 25,
+                        )),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20)
+            ],
+          );
+        }
+        return Container();
+      },
+    );
+  }
+
+  String formatDuration(Duration duration) {
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
 }

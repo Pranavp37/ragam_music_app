@@ -1,13 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ragam/core/configs/constant/app_urls.dart';
 import 'package:ragam/data/models/auth/create_user_req.dart';
 import 'package:ragam/data/models/auth/signin_user_request.dart';
+import 'package:ragam/data/models/auth/user.dart';
+import 'package:ragam/domain/entities/auth/user.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signin(SigninUserRequest signinUserRequest);
 
   Future<Either> signup(CreateUserReq createUserReq);
+
+  Future<Either> getUser();
 }
 
 class AuthFirebaseServiceImple extends AuthFirebaseService {
@@ -38,7 +43,7 @@ class AuthFirebaseServiceImple extends AuthFirebaseService {
         email: createUserReq.email,
         password: createUserReq.password,
       );
-      FirebaseFirestore.instance.collection('User').add({
+      FirebaseFirestore.instance.collection('User').doc(data.user?.uid).set({
         'name': createUserReq.fullName,
         'email': data.user?.email,
       });
@@ -51,6 +56,27 @@ class AuthFirebaseServiceImple extends AuthFirebaseService {
         message = 'An account already exists with that email. ';
       }
       return left(message);
+    }
+  }
+
+  @override
+  Future<Either> getUser() async {
+    try {
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+      var user = await firebaseFirestore
+          .collection('User')
+          .doc(firebaseAuth.currentUser?.uid)
+          .get();
+
+      UserModel userModel = UserModel.fromJson(user.data()!);
+      userModel.imageUrl =
+          firebaseAuth.currentUser?.photoURL ?? AppURLs.defaultUrl;
+      UserEntity userEntity = userModel.toEntity();
+      return Right(userEntity);
+    } catch (e) {
+      return const Left('An error occured');
     }
   }
 }

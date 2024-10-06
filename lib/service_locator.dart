@@ -5,10 +5,14 @@ import 'package:ragam/data/sources/auth/auth_firebase_service.dart';
 import 'package:ragam/data/sources/song/song_firebase_services.dart';
 import 'package:ragam/domain/repository/auth/auth.dart';
 import 'package:ragam/domain/repository/song/song.dart';
+import 'package:ragam/domain/usecases/auth/get_user.dart';
 import 'package:ragam/domain/usecases/auth/signin.dart';
 import 'package:ragam/domain/usecases/auth/signup.dart';
+import 'package:ragam/domain/usecases/song/add_or_remove.dart';
+import 'package:ragam/domain/usecases/song/get_favorate_songs.dart';
 import 'package:ragam/domain/usecases/song/get_news_songs.dart';
 import 'package:ragam/domain/usecases/song/get_play_list.dart';
+import 'package:ragam/domain/usecases/song/is_favotate.dart';
 
 final s1 = GetIt.instance;
 
@@ -28,4 +32,12 @@ Future<void> initilizeDependecies() async {
   s1.registerSingleton<GetNewsSongsUsecase>(GetNewsSongsUsecase());
 
   s1.registerSingleton<GetPlayListUsecase>(GetPlayListUsecase());
+
+  s1.registerSingleton<AddOrRemoveSongsUsecase>(AddOrRemoveSongsUsecase());
+
+  s1.registerSingleton<IsFavotateSongsUsecase>(IsFavotateSongsUsecase());
+
+  s1.registerSingleton<GetUserUsecase>(GetUserUsecase());
+
+  s1.registerSingleton<GetFavorateUseCase>(GetFavorateUseCase());
 }
