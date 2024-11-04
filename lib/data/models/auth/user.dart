@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ragam/domain/entities/auth/user.dart';
 
 class UserModel {

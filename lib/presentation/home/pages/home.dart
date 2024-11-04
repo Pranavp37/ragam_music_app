@@ -135,6 +135,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 //
   Widget _tabbar() {
     return TabBar(
+      
       controller: _tabcontroller,
       padding: const EdgeInsets.symmetric(vertical: 40),
       labelColor: context.isDarkmode ? Colors.white : Colors.black,

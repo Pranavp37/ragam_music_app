@@ -47,6 +47,7 @@ class AuthFirebaseServiceImple extends AuthFirebaseService {
         'name': createUserReq.fullName,
         'email': data.user?.email,
       });
+
       return const Right('Signup was succeful');
     } on FirebaseAuthException catch (e) {
       String message = '';
